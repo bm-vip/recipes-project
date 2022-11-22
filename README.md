@@ -32,7 +32,7 @@ kubectl get pods --watch
 Finally, for checking application interface, choose one of these solutions:<br/>
 * port forward services on current OS and click on the [Link](http://localhost:2022/swagger-ui) after executing command:
     ```
-    kubectl port-forward svc/service-user 2022:80&    
+    kubectl port-forward svc/recipes-project 2022:80&    
     ```
 * Or get URL of the application service:
     ```
@@ -40,7 +40,7 @@ Finally, for checking application interface, choose one of these solutions:<br/>
     ```
 Scaling the application to increase the number of replicas to 3 or more:
 ```
-kubectl scale --replicas=3 deployment/user-service
+kubectl scale --replicas=3 deployment/recipes-project
 ```
 
 ## Objective
