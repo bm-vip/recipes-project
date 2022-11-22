@@ -1,0 +1,35 @@
+server:
+  port: 2022
+  error:
+    include-message: always
+    include-binding-errors: always
+# Spring Boot configuration
+spring:
+  application:
+    name: recipes-project
+    version: @project.version@
+  liquibase.change-log: "classpath:/db/changelog/master.xml"
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/recipes_db}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:postgres}
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true
+    properties:
+      org:
+        hibernate:
+          envers:
+            store_data_at_delete: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/schema.sql

@@ -1,0 +1,7 @@
+id,created_by,created_date,modified_by,modified_date,version,name,deleted
+1,behrooz.mohamadi,2022-11-20 19:00:42.000000,behrooz.mohamadi,2022-11-20 19:00:42.000000,0,Fast food,false
+2,behrooz.mohamadi,2022-11-20 19:01:58.000000,behrooz.mohamadi,2022-11-20 19:00:42.000000,0,Vegetarian,false
+3,behrooz.mohamadi,2022-11-20 19:01:58.000000,behrooz.mohamadi,2022-11-20 19:00:42.000000,0,Sea food,false
+4,behrooz.mohamadi,2022-11-20 19:02:23.000000,behrooz.mohamadi,2022-11-20 19:00:42.000000,0,Dairy,false
+5,behrooz.mohamadi,2022-11-20 19:02:23.000000,behrooz.mohamadi,2022-11-20 19:00:42.000000,0,Protein,false
+6,behrooz.mohamadi,2022-11-20 19:02:23.000000,behrooz.mohamadi,2022-11-20 19:00:42.000000,0,Fat,false

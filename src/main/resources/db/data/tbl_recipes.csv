@@ -1,0 +1,22 @@
+id,created_by,created_date,modified_by,modified_date,version,food_id,ingredient_id,count,deleted
+1,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,1,1,1,false
+2,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,1,2,100,false
+3,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,1,3,500,false
+4,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,1,7,250,false
+5,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,1,10,30,false
+6,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,2,14,300,false
+7,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,2,10,100,false
+8,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,2,12,10,false
+9,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,2,16,250,false
+10,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,2,2,100,false
+11,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,3,18,500,false
+12,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,3,4,200,false
+13,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,3,7,200,false
+14,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,3,12,50,false
+15,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,4,17,500,false
+16,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,4,13,350,false
+17,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,4,11,350,false
+18,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,5,16,500,false
+19,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,5,13,350,false
+20,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,6,19,2,false
+21,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,6,2,1,false

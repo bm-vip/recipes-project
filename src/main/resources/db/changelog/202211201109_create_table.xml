@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="202211201109-1" author="behrooz.mohamadi">
+        <createSequence incrementBy="1" sequenceName="seq_food_group" startValue="1"/>
+        <createSequence incrementBy="1" sequenceName="seq_food" startValue="1"/>
+        <createSequence incrementBy="1" sequenceName="seq_ingredient" startValue="1"/>
+        <createSequence incrementBy="1" sequenceName="seq_recipes" startValue="1"/>
+        <createSequence incrementBy="1" sequenceName="seq_unit_type" startValue="1"/>
+    </changeSet>
+    <changeSet id="202211201109-2" author="behrooz.mohamadi">
+        <createTable tableName="tbl_food_group">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_food_group"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="modified_date" type="DATETIME"/>
+            <column defaultValueNumeric="0" name="version" type="integer"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="0"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="202211201109-3" author="behrooz.mohamadi">
+        <createTable tableName="tbl_unit_type">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_unit_type"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="modified_date" type="DATETIME"/>
+            <column defaultValueNumeric="0" name="version" type="integer"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="0"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="202211201109-4" author="behrooz.mohamadi">
+        <createTable tableName="tbl_food">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_food"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="modified_date" type="DATETIME"/>
+            <column defaultValueNumeric="0" name="version" type="integer"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="need_oven" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="servings" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="food_group_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="0"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="202211201109-5" author="behrooz.mohamadi">
+        <createTable tableName="tbl_ingredient">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_ingredient"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="modified_date" type="DATETIME"/>
+            <column defaultValueNumeric="0" name="version" type="integer"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_type_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="0"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="202211201109-6" author="behrooz.mohamadi">
+        <createTable tableName="tbl_recipes">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_recipes"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="DATETIME"/>
+            <column name="modified_by" type="VARCHAR(255)"/>
+            <column name="modified_date" type="DATETIME"/>
+            <column defaultValueNumeric="0" name="version" type="integer"/>
+            <column name="food_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ingredient_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted" type="boolean" defaultValue="0"></column>
+        </createTable>
+    </changeSet>
+    <changeSet id="202211201109-7" author="behrooz.mohamadi">
+        <addForeignKeyConstraint baseColumnNames="food_group_id" baseTableName="tbl_food"
+                                 constraintName="FK_food_group_id" referencedColumnNames="id"
+                                 referencedTableName="tbl_food_group"/>
+        <addForeignKeyConstraint baseColumnNames="unit_type_id" baseTableName="tbl_ingredient"
+                                 constraintName="FK_unit_type_id" referencedColumnNames="id"
+                                 referencedTableName="tbl_unit_type"/>
+        <addForeignKeyConstraint baseColumnNames="food_id" baseTableName="tbl_recipes"
+                                 constraintName="FK_food_id" referencedColumnNames="id"
+                                 referencedTableName="tbl_food"/>
+        <addForeignKeyConstraint baseColumnNames="ingredient_id" baseTableName="tbl_recipes"
+                                 constraintName="FK_ingredient_id" referencedColumnNames="id"
+                                 referencedTableName="tbl_ingredient"/>
+
+        <addUniqueConstraint columnNames="ingredient_id,food_id,count" constraintName="uc_ingredient_food_cnt" tableName="tbl_recipes"/>
+        <addUniqueConstraint columnNames="name" constraintName="uc_foodgroup_name" tableName="tbl_food_group"/>
+        <addUniqueConstraint columnNames="name" constraintName="uc_unittype_name" tableName="tbl_unit_type"/>
+    </changeSet>
+</databaseChangeLog>

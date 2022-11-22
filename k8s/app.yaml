@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: recipes-project
+  name: recipes-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: recipes-project
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: recipes-project
+    spec:
+      containers:
+        - image: recipes-project-image
+          name: recipes-project-image
+          resources: {}
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: DB_URL
+            value: jdbc:postgresql://postgres-db/recipes_db
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-credentials
+                key: username
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: db-credentials
+                key: password
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: recipes-project
+  name: recipes-project
+spec:
+  ports:
+    - name: 2022-2022
+      port: 2022
+      protocol: TCP
+      targetPort: 2022
+  selector:
+    app: recipes-project
+  type: LoadBalancer
+status:
+  loadBalancer: {}

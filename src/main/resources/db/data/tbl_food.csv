@@ -1,0 +1,7 @@
+id,created_by,created_date,modified_by,modified_date,version,name,need_oven,servings,food_group_id,deleted
+1,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,Pizza,true,1,1,false
+2,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,Pasta,true,1,1,false
+3,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,Soup,true,1,2,false
+4,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,Kebab,true,1,5,false
+5,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,Chicken,true,1,5,false
+6,behrooz.mohamadi,2022-03-27 19:03:38.000000,behrooz.mohamadi,2022-03-27 19:00:42.000000,0,Omelette,true,1,6,false
