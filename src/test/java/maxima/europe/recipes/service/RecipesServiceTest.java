@@ -31,7 +31,7 @@ public class RecipesServiceTest {
 
     @Test
     public void search_shouldReturnPageableRecipesWhenIngredientNameISNotSalmonAndFoodNeedOven() {
-        //mock db
+        //Given 
         List<RecipesEntity> entities = new ArrayList<>();
         entities.add(new RecipesEntity(){{setId(1L);setFood(new FoodEntity(){{setId(1L);setName("Pizza");}});setIngredient(new IngredientEntity(){{setId(1L);setName("Cheese");setUnitType(new UnitTypeEntity());}});}});
         entities.add(new RecipesEntity(){{setId(2L);setFood(new FoodEntity(){{setId(1L);setName("Pizza");}});setIngredient(new IngredientEntity(){{setId(2L);setName("Tomato sauce");setUnitType(new UnitTypeEntity());}});}});
@@ -42,9 +42,10 @@ public class RecipesServiceTest {
         QRecipesEntity path = QRecipesEntity.recipesEntity;
         builder.and(path.ingredient.name.ne("salmon"));
         builder.and(path.food.needOven.eq(true));
+        //When
         when(repository.findAll(builder, PageRequest.of(0, 10))).thenReturn(new PageImpl<>(entities));
 
-        //test search service
+        //Then
         Page<RecipesModel> pageModels = service.search(builder, PageRequest.of(0, 10));
         assertThat(pageModels).isNotNull().isNotEmpty().size().isEqualTo(5);
         assertThat(pageModels.map(m->m.getIngredient().getName())).contains("Cheese","Tomato sauce","Semolina flour","Mushroom","Olive");
@@ -52,7 +53,7 @@ public class RecipesServiceTest {
 
     @Test
     public void findAll_shouldReturnPageableRecipesWhenFoodGroupISVegetarian() {
-        //mock db
+        //Given 
         List<RecipesEntity> entities = new ArrayList<>();
         entities.add(new RecipesEntity(){{setId(1L);setFood(new FoodEntity(){{setId(1L);setName("Pizza");}});setIngredient(new IngredientEntity(){{setId(1L);setName("Cheese");setUnitType(new UnitTypeEntity());}});}});
         entities.add(new RecipesEntity(){{setId(2L);setFood(new FoodEntity(){{setId(1L);setName("Pizza");}});setIngredient(new IngredientEntity(){{setId(2L);setName("Tomato sauce");setUnitType(new UnitTypeEntity());}});}});
@@ -62,9 +63,10 @@ public class RecipesServiceTest {
         BooleanBuilder builder = new BooleanBuilder();
         QRecipesEntity path = QRecipesEntity.recipesEntity;
         builder.and(path.food.foodGroup.name.contains("Vegetarian"));
+        //When
         when(repository.findAll(builder, PageRequest.of(0, 10))).thenReturn(new PageImpl<>(entities));
 
-        //test search service
+        //Then
         RecipesModel filter = new RecipesModel(){{setFood(new FoodModel(){{setFoodGroup(new FoodGroupModel(){{setName("Vegetarian");}});}});}};
         Page<RecipesModel> pageModels = service.findAll(filter, PageRequest.of(0, 10));
         assertThat(pageModels).isNotNull().isNotEmpty().size().isEqualTo(5);
@@ -73,7 +75,7 @@ public class RecipesServiceTest {
 
     @Test
     public void findAll_shouldReturnPageableRecipesWhenFoodServingsIS1AndIngredientContainsTomato() {
-        //mock db
+        //Given
         List<RecipesEntity> entities = new ArrayList<>();
         entities.add(new RecipesEntity(){{setId(1L);setFood(new FoodEntity(){{setId(1L);setName("Pizza");}});setIngredient(new IngredientEntity(){{setId(2L);setName("Tomato sauce");setUnitType(new UnitTypeEntity());}});}});
         entities.add(new RecipesEntity(){{setId(2L);setFood(new FoodEntity(){{setId(1L);setName("Pasta");}});setIngredient(new IngredientEntity(){{setId(3L);setName("Tomato sauce");setUnitType(new UnitTypeEntity());}});}});
@@ -82,9 +84,10 @@ public class RecipesServiceTest {
         QRecipesEntity path = QRecipesEntity.recipesEntity;
         builder.and(path.food.servings.eq(1));
         builder.and(path.ingredient.name.contains("Tomato"));
+        //When
         when(repository.findAll(builder, PageRequest.of(0, 10))).thenReturn(new PageImpl<>(entities));
 
-        //test search service
+        //Then
         RecipesModel filter = new RecipesModel(){{setFood(new FoodModel(){{setServings(1);}});setIngredient(new IngredientModel(){{setName("Tomato");}});}};
         Page<RecipesModel> pageModels = service.findAll(filter, PageRequest.of(0, 10));
         assertThat(pageModels).isNotNull().isNotEmpty().size().isEqualTo(3);
@@ -93,15 +96,16 @@ public class RecipesServiceTest {
 
     @Test
     public void findAll_shouldReturnPageableRecipesWhenIngredientNameISCheese() {
-        //mock db
+        //Given 
         List<RecipesEntity> entities = new ArrayList<>();
         entities.add(new RecipesEntity(){{setId(1L);setFood(new FoodEntity(){{setId(1L);setName("Pizza");}});setIngredient(new IngredientEntity(){{setId(1L);setName("Cheese");setUnitType(new UnitTypeEntity());}});}});
         BooleanBuilder builder = new BooleanBuilder();
         QRecipesEntity path = QRecipesEntity.recipesEntity;
         builder.and(path.ingredient.name.contains("Cheese"));
+        //When
         when(repository.findAll(builder, PageRequest.of(0, 10))).thenReturn(new PageImpl<>(entities));
 
-        //test search service
+        //Then 
         RecipesModel filter = new RecipesModel(){{setIngredient(new IngredientModel(){{setName("Cheese");}});}};
         Page<RecipesModel> pageModels = service.findAll(filter, PageRequest.of(0, 10));
         assertThat(pageModels).isNotNull().isNotEmpty().size().isEqualTo(1);
