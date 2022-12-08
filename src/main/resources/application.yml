@@ -33,3 +33,12 @@ spring:
     init:
       mode: always
       schema-locations: classpath:db/schema.sql
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'

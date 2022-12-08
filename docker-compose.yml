@@ -1,4 +1,8 @@
-version: '3'
+version: '3.7'
+
+volumes:
+  prometheus_data: {}
+
 services:
   app:
     image: recipes-project-image
@@ -20,7 +24,7 @@ services:
     container_name: postgresql-container
     restart: unless-stopped
     volumes:
-      - ./db/schema.sql:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     environment:
@@ -32,3 +36,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    depends_on:
+      - app
+    restart: unless-stopped
+#    deploy:
+#      placement:
+#        constraints:
+#          - node.hostname == ${HOSTNAME}
