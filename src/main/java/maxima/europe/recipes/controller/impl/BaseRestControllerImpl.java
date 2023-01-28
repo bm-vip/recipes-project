@@ -66,7 +66,7 @@ public abstract class BaseRestControllerImpl<M extends BaseModel<ID>, ID extends
 
     @Override
     public ResponseEntity<M> save(M model) {
-        log.debug("call BaseRestImpl.save for {}");
+        log.debug("call BaseRestImpl.save for {}", model);
         if (model.getId() != null) {
             throw new BadRequestException("The id must not be provided when creating a new record");
         }
@@ -75,7 +75,7 @@ public abstract class BaseRestControllerImpl<M extends BaseModel<ID>, ID extends
 
     @Override
     public ResponseEntity<M> update(M model) {
-        log.debug("call BaseRestImpl.update for {}", model, clazz.getName());
+        log.debug("call BaseRestImpl.update for {}", model);
         return ResponseEntity.ok(service.save(model));
     }
 
